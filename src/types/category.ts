@@ -1,5 +1,10 @@
+export interface SanityImage {
+  url: string;
+  alt?: string;
+}
+
 export type Category = {
+  _id: string;
   title: string;
-  id: number;
-  img: string;
+  image: SanityImage;
 };

@@ -138,7 +138,10 @@ const QuickViewModal = () => {
                     </button>
 
                     <Image
-                      src={product?.imgs?.previews?.[activePreview]}
+                      src={
+                        product?.imgs?.previews?.[activePreview] ||
+                        "/fallback-thumbnail.png"
+                      }
                       alt="products-details"
                       width={400}
                       height={400}
