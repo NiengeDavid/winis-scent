@@ -15,6 +15,16 @@ export default defineType({
         Rule.required().max(100).warning("Keep the title concise."),
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "percentageOff",
       title: "Percentage Off",
       type: "number",
@@ -87,19 +97,7 @@ export default defineType({
     defineField({
       name: "description",
       title: "Description",
-      type: "object",
-      fields: [
-        defineField({
-          name: "specification",
-          title: "Specification",
-          type: "text",
-        }),
-        defineField({
-          name: "careAndMaintenance",
-          title: "Care & Maintenance",
-          type: "text",
-        }),
-      ],
+      type: "block-content",
     }),
     defineField({
       name: "additionalInformation",
@@ -107,14 +105,21 @@ export default defineType({
       type: "array",
       of: [
         defineField({
-          name: "field",
-          title: "Field",
-          type: "string",
-        }),
-        defineField({
-          name: "value",
-          title: "Value",
-          type: "string",
+          name: "category",
+          title: "Category",
+          type: "object",
+          fields: [
+            defineField({
+              name: "field",
+              title: "Field",
+              type: "string",
+            }),
+            defineField({
+              name: "value",
+              title: "Value",
+              type: "string",
+            }),
+          ],
         }),
       ],
     }),
